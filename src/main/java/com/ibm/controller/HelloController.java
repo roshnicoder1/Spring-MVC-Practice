@@ -13,7 +13,12 @@ public class HelloController {
 	public String display()  
 	{  
 	    return "hello";  
-	}  
+	} 
+	@RequestMapping(value="/view",method=RequestMethod.GET)  
+    public String redirect()  
+    {  
+        return "viewpage";  
+    }   
 	@RequestMapping(value="/helloagain",method=RequestMethod.GET)  
 	public String displays()  
 	{  
