@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
@@ -28,18 +29,36 @@ public class HelloController {
 	    return "final";  
 	} 
 	
-	@RequestMapping("/login")  
-    public String display(HttpServletRequest req,Model m)  
+//	@RequestMapping("/login")  
+//    public String display(HttpServletRequest req,Model m)  
+//    {  
+//        //read the provided form data  
+//        String name=req.getParameter("name");  
+//        String pass=req.getParameter("pass");  
+//        if(pass.equals("admin"))  
+//        {  
+//            String msg="Hello "+ name;  
+//            //add a message to the model  
+//            m.addAttribute("message", msg);  
+//            return "loginsuccess";  
+//        }  
+//        else  
+//        {  
+//            String msg="Sorry "+ name+". You entered an incorrect password";  
+//            m.addAttribute("message", msg);  
+//            return "errorpage";  
+//        }     
+//    }  
+	//read the provided form data   by @RequestParam instaed of HttpServletRequest
+	@RequestMapping("/login") 
+    public String display(@RequestParam("name") String name,@RequestParam("pass") String pass,Model m)  
     {  
-        //read the provided form data  
-        String name=req.getParameter("name");  
-        String pass=req.getParameter("pass");  
         if(pass.equals("admin"))  
         {  
             String msg="Hello "+ name;  
             //add a message to the model  
             m.addAttribute("message", msg);  
-            return "loginsuccess";  
+            return "viewpage";  
         }  
         else  
         {  
